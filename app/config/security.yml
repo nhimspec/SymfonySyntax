@@ -1,0 +1,70 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, fos_userbundle]
+        in_memory:
+            memory:
+                users:
+                    user:
+                        password: $2y$13$Q28j/6dyziu95nOie1lGYu/Ttf/Fg1jOp5GDmVxcL3WuzZ6Zo0vuW
+                        roles: 'ROLE_USER'
+                    admin2:
+                        password: $2y$13$tfJfoefsE4I6suE0BEEMcuOVfrFPuDUwP4NsbnQiNuS5SjOH68qcy
+                        roles: 'ROLE_ADMIN'
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+    access_control:
+            - { path: ^/admin, roles: ROLE_USER }
+            - { path: ^/admin/delete, roles: ROLE_ADMIN }
+            - { path: ^/profile, role: ROLE_USER }
+            - { path: ^/social/login, roles: ROLE_USER }
+            - { path: ^/show_user, role: ROLE_USER }
+            - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+            - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        secured_area:
+            anonymous: ~
+            pattern:    ^/
+            http_basic: ~
+            provider: fos_userbundle
+            form_login:
+                # The route name that the login form submits to
+                check_path: fos_user_security_check
+                # The name of the route where the login form lives
+                # When the user tries to access a protected page, they are redirected here
+                login_path: fos_user_security_login
+
+                # Secure the login form against CSRF
+                # Reference: http://symfony.com/doc/current/cookbook/security/csrf_in_login_form.html
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                # The route name the user can go to in order to logout
+                path: fos_user_security_logout
+                # The name of the route to redirect to after logging out
+                target: homepage
+            oauth:
+                resource_owners:
+                    facebook:           "/social/login/check-facebook"
+                login_path:        /
+                failure_path:      /
+                default_target_path: /profile
+                oauth_user_provider:
+                    service: custom.social.user_provider

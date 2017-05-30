@@ -1,0 +1,74 @@
+.heading {
+    text-align: center;
+}
+
+.btn-create {
+    margin-bottom: 10px;
+}
+
+.table-user th, td {
+    text-align: center;
+}
+
+.table-post th, td {
+    text-align: center;
+}
+
+.login-wrap {
+    display: block;
+    width: 600px;
+    margin: auto;
+}
+
+.nav-menu {
+    height: 55px;
+    width: 100%;
+    display: block;
+    text-align: right;
+    padding: 10px;
+    border-bottom: 1px solid rgba(102, 102, 102, 0.15);
+    margin-bottom: 40px;
+}
+
+.nav-menu h3 {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nav-menu .btn {
+    display: inline-block;
+}
+
+.posts article .title a {
+    color: #18bc9c;
+    text-decoration: none;
+}
+
+.posts article > a {
+    display: block;
+}
+
+.posts article a div {
+    width: 100%;
+    height: 300px;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+div.container > div.thumbnail {
+    width: 100%;
+    height: 400px;
+    background-position: center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#upload_avatar img {
+    width: 200px;
+    height: 200px;
+}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    <div class="container">
+        <div class="row">
+            {{ form_start(form, { 'attr': { 'class': 'fos_user_profile_edit', 'novalidate':'novalidate' } }) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            <div class="form-group">
+                {{ form_label(form.picture) }}
+                {% block vich_file_widget %}
+                    <div class="vich-image">
+                        <a href="javascript:void(0)" id="upload_avatar">
+                            <img id="picture" src="{{ form.picture.vars.download_uri }}">
+                        </a>
+                        {{ form_widget(form.picture.file) }}
+                    </div>
+                {% endblock %}
+            </div>
+            {{ form_row(form.current_password) }}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Edit">
+                <a href="{{ path('fos_user_profile_show') }}" class="btn btn-default">Back</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

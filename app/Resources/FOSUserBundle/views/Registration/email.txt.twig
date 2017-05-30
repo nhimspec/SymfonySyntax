@@ -1,0 +1,14 @@
+{% block subject %}
+{{ 'This is confirm email' }}
+{% endblock %}
+
+{# If config.yml is text#}
+{% block body_text %}
+{{ 'Hello ' ~ user.username  }}
+{{ 'This is your activation email: ' ~ confirmationUrl }}
+{% endblock %}
+
+{# If config.yml is HTML #}
+{% block body_html %}
+{% include '@FOSUser/Registration/email_message.html.twig' %}
+{% endblock %}

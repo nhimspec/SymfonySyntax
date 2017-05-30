@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {% block style %}
+            <link rel="stylesheet" href="{{ asset('assets/vendor/fontello/css/fontello.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/layout/css/app.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block header %}
+            <div class="nav-menu">
+                <a href="{{ path('homepage') }}" style="float: left"><img src="{{ asset('favicon.ico') }}" alt=""></a>
+                <a href="{{ path('post_show') }}" class="btn btn-warning" style="float: left;margin-left: 10px;">Post Show</a>
+                <a href="{{ path('about') }}" class="btn btn-default" style="float: left;margin-left: 10px;">About</a>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <h3> Hi!  <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></h3>
+                    <a class="btn btn-default" href="{{ path('admin') }}">Post Edit</a>
+                    <a class="btn btn-success" href="{{ path('showuser') }}">Users Manager</a>
+                    <a class="btn btn-primary" href="{{ path('fos_user_security_logout') }}">Logout</a>
+                {% else %}
+                    <a class="btn btn-primary" href="{{ path('fos_user_security_login') }}">Login</a>
+                    <a class="btn btn-primary" href="{{ path('fos_user_registration_register') }}">Register</a>
+                {% endif %}
+            </div>
+        {% endblock %}
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('assets/layout/js/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

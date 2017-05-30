@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1 class="heading">Create Post</h1>
+        <div class="post_create">
+            {{ form_start(form, { attr : {novalidate:'novalidate'}}) }}
+            {{ form_row(form.title) }}
+            <div class="form-group">
+                {{ form_label(form.thumbnail) }}
+                {{ form_errors(form.thumbnail) }}
+                {% block vich_file_widget %}
+                    <div class="vich-image">
+                        <a href="{{ form.thumbnail.vars.download_uri }}">
+                            <img id="thumbnail" src="{{ form.thumbnail.vars.download_uri }}">
+                        </a>
+                        {{ form_widget(form.thumbnail.file) }}
+                    </div>
+                {% endblock %}
+            </div>
+            {{ form_row(form.summary) }}
+            {{ form_row(form.content) }}
+            {{ form_row(form.authorEmail) }}
+            {{ form_row(form.publishedAt) }}
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Create">
+                <a href="{{ path('admin') }}" class="btn btn-default">Back</a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

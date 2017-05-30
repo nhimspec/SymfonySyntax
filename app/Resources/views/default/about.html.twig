@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="login-wrap" style="width: 500px; margin: 0 auto 100px;">
+                <h2 style="text-align: center">Contact</h2>
+                {{ form_start(form_about,{attr: { novalidate: 'novalidate'}}) }}
+                {{ form_widget(form_about) }}
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Send">
+                    <a href="{{ path('homepage') }}" class="btn btn-default">Back</a>
+                </div>
+                {{ form_end(form_about) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

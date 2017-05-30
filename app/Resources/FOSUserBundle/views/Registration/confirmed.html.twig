@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="register-wrap" style="width: 500px; margin: 0 auto 100px;">
+                <p style="text-align: center">Congrats {{ user.email }}, your account is now activated.</p>
+                <a href="{{ path('homepage') }}">Home</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

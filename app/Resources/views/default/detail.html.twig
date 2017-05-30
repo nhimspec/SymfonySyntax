@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="thumbnail" style="background-image: url('{{ vich_uploader_asset(post,'thumbnail') }}')"></div>
+        <h1 class="title">{{ post.title }}</h1>
+        <p class="summary">{{ post.summary }}</p>
+        <div class="content">{{ post.content|md2html }}</div>
+    </div>
+{% endblock %}

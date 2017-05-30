@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="register-wrap" style="width: 500px; margin: 0 auto 100px;">
+                <h2 style="text-align: center">Register Form</h2>
+                {{ form_start(form, {attr: {novalidate:'novalidate'}}) }}
+                {{ form_widget(form) }}
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Create">
+                    <a href="{{ path('homepage') }}" class="btn btn-default">Back</a>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

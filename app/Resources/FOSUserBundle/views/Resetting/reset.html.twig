@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="ressting-wrap" style="width: 500px; margin: 0 auto 100px;">
+                {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}) }) }}
+                {{ form_widget(form) }}
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Change Password">
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

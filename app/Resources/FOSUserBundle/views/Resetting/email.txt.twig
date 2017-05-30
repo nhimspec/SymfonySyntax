@@ -1,0 +1,14 @@
+{% block subject %}
+{{ 'This is ressting password email!!' }}
+{% endblock %}
+
+{# If config.yml is text#}
+{% block body_text %}
+{{ 'Hello ' ~ user.username  }}
+{{ 'This is your resseting email url: ' ~ confirmationUrl }}
+{% endblock %}
+
+{# If config.yml is HTML #}
+{% block body_html %}
+{% include '@FOSUser/Resetting/email_message.html.twig' %}
+{% endblock %}

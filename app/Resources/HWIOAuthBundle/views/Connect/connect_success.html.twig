@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% if app.user.facebookId is empty %}
+                <div class="text-center">
+                    <h3>This account: {{ userInformation.email }} - {{ userInformation.realName }} is already linked by other account</h3>
+                    <a href="{{ path('fos_user_profile_show') }}">Back</a>
+                </div>
+            {% else %}
+                <div class="text-center">
+                    <h3>{{ 'header.success' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3>
+                    <a href="{{ path('fos_user_profile_show') }}">Back</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

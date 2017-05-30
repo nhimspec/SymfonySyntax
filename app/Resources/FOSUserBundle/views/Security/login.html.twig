@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="login-wrap" style="width: 500px; margin: 0 auto 100px;">
+                <h2 style="text-align: center">Login Form</h2>
+                <form action="{{ path('fos_user_security_check') }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="username"></label>
+                        <label class="control-label required" for="_username">Username</label>
+                        <input type="text" id="username" name="_username" required="required" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label required" for="_password">Password</label>
+                        <input type="password" id="password" name="_password" required="required" class="form-control">
+                    </div>
+                    {% if error %}
+                        <div class="alert alert-danger">
+                            <strong>Error!</strong> Invalid username or email.
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <a class="btn btn-primary" href="{{ hwi_oauth_login_url('facebook') }}">Facebook</a>
+                        <input type="submit" class="btn btn-primary" value="Login">
+                        <a href="/" class="btn btn-default">Back</a>
+                    </div>
+                    <a href="{{ path('fos_user_resetting_request') }}">Forgot Password?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
