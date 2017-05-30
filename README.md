@@ -23,8 +23,9 @@ Installation
 First, install the [Symfony Installer](https://github.com/symfony/symfony-installer)
 if you haven't already. Then, install the Symfony Demo Application executing
 
->
->     $ git clone https://github.com/nhimspec/SymfonySyntax SymfonySyntax
->     $ cd SymfonySyntax/
->     $ composer install
+```bash
+    $ git clone https://github.com/nhimspec/SymfonySyntax SymfonySyntax
+    $ cd SymfonySyntax/
+    $ composer install
+```
 
