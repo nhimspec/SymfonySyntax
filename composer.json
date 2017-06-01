@@ -18,6 +18,7 @@
     },
     "require": {
         "php": ">=5.3.9",
+        "aequasi/cache-bundle": "^3.0",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/orm": "^2.4.8",
         "erusev/parsedown": "^1.6",

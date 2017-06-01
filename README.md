@@ -25,6 +25,7 @@ Bundles Added
 3. [VichUploader](https://github.com/dustin10/VichUploaderBundle) Upload and Store File.
 4. [Pagerfanta](https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle) Create Page Number.
 5. [IvoryCKEditor](http://symfony.com/doc/current/bundles/IvoryCKEditorBundle/index.html) v4.0 Ckeditor Create/Edit Post.
+6. [Aequasi Memcached](https://github.com/aequasi/cache-bundle) Save data to Memcached
 
 
 Installation

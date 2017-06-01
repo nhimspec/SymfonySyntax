@@ -39,8 +39,19 @@ class BlogController extends Controller
      * value given in the route.
      * See http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html
      */
-    public function postShowAction(Post $post)
+    public function postShowAction($slug)
     {
+        $cache = $this->get( 'aequasi_cache.instance.default' );
+
+        if ( !$cache->fetch('post_' . $slug) ){
+            $post = $this->getDoctrine()->getRepository('AppBundle:Post')->findOneBy(array(
+                'slug' => $slug
+            ));
+            $cache->save('post_' . $slug, $post);
+        }
+
+        $post = $cache->fetch('post_' . $slug);
+
         return $this->render('default/detail.html.twig', array(
             'post' => $post
         ));
