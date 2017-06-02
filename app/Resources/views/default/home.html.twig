@@ -11,12 +11,11 @@
                     <a href="{{ path('post_detail',{slug: post.slug}) }}">
                         <div class="thumbnail" style="background-image: url('{{ vich_uploader_asset(post,'thumbnail') }}')"></div>
                     </a>
-                </article>
                     <p class="summary">{{ post.summary }}</p>
                 </article>
             {% endfor %}
             <div class="navigation text-center">
-                {{ pagerfanta(posts, 'twitter_bootstrap3', { routeName: 'post_show' }) }}
+                {{ pagerfanta(posts, 'twitter_bootstrap3', { routeName: 'post_show' , proximity: 2 }) }}
             </div>
         </div>
     </div>

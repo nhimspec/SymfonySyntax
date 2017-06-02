@@ -9,6 +9,7 @@ Requirements
 ------------
 
   * Symfony 2.7 or higher
+  * Memcached Enabled.
   * PHP 5.5.9 or higher
   * PDO-SQLite PHP extension enabled, MySQL...
   * and the [usual Symfony application requirements](https://symfony.com/doc/2.8/reference/requirements.html).
