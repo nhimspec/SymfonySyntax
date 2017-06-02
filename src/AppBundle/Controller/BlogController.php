@@ -30,7 +30,7 @@ class BlogController extends Controller
 
 
     /**
-     * @param Post $post
+     * @param $slug
      *
      * @return Response
      *
@@ -41,19 +41,20 @@ class BlogController extends Controller
      */
     public function postShowAction($slug)
     {
-        $cache = $this->get( 'aequasi_cache.instance.default' );
+        $cache = $this->get('cache.provider.my_memcached');
+        $item = $cache->getItem('post_' . $slug);
 
-        if ( !$cache->fetch('post_' . $slug) ){
+        if (!$item->isHit()) {
             $post = $this->getDoctrine()->getRepository('AppBundle:Post')->findOneBy(array(
                 'slug' => $slug
             ));
-            $cache->save('post_' . $slug, $post);
+            $item->set($post);
+            $cache->save($item);
         }
 
-        $post = $cache->fetch('post_' . $slug);
-
         return $this->render('default/detail.html.twig', array(
-            'post' => $post
+            'post' => $item->get()
         ));
+        
     }
 }

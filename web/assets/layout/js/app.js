@@ -26,7 +26,7 @@ $(document).ready(function() {
 
         if ($.inArray(fileType, ValidImageTypes) > 0) {
             var form = new FormData();
-            form.append('file', this.files[0]);
+            form.append('file', file);
             $.ajax({
                 url: '/profile/edit/ajax',
                 type: 'post',

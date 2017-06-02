@@ -112,6 +112,10 @@ class BlogAdminController extends Controller
             throw $this->createNotFoundException('No  found');
         }
         $em = $this->getDoctrine()->getManager();
+
+        $cache = $this->container->get('cache.provider.my_memcached');
+        $cache->deleteItem('post_' . $post->getSlug());
+
         $em->remove($post);
         $em->flush();
         return $this->redirectToRoute('admin');

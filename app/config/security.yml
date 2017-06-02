@@ -44,7 +44,7 @@ security:
             anonymous: ~
             pattern:    ^/
             http_basic: ~
-            provider: fos_userbundle
+            provider: chain_provider
             form_login:
                 # The route name that the login form submits to
                 check_path: fos_user_security_check

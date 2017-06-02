@@ -19,8 +19,13 @@
     "require": {
         "php": ">=5.3.9",
         "aequasi/cache-bundle": "^3.0",
+        "cache/adapter-bundle": "^0.5.0",
+        "cache/cache-bundle": "^0.5.0",
+        "cache/memcached-adapter": "^0.4.0",
+        "cache/psr-6-doctrine-bridge": "^3.0",
         "doctrine/doctrine-bundle": "~1.4",
         "doctrine/orm": "^2.4.8",
+        "egeloen/ckeditor-bundle": "^5.0",
         "erusev/parsedown": "^1.6",
         "friendsofsymfony/user-bundle": "~2.0",
         "hwi/oauth-bundle": "^0.5.3",

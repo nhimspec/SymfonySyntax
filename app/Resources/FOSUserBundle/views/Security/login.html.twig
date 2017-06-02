@@ -4,7 +4,7 @@
         <div class="row">
             <div class="login-wrap" style="width: 500px; margin: 0 auto 100px;">
                 <h2 style="text-align: center">Login Form</h2>
-                <form action="{{ path('fos_user_security_check') }}" method="post">
+                <form action="{{ path('fos_user_security_check') }}" method="post" novalidate="novalidate">
                     {% if csrf_token %}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
                     {% endif %}
