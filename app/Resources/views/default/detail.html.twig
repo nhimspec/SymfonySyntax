@@ -5,5 +5,35 @@
         <h1 class="title">{{ post.title }}</h1>
         <p class="summary">{{ post.summary }}</p>
         <div class="content">{{ post.content|md2html }}</div>
+        <div id="post-add-comment" class="well">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {{ render(controller('AppBundle:Blog:commentForm', { 'id': post.id })) }}
+            {% else %}
+                <p>
+                    <a class="btn btn-success" href="{{ path('fos_user_security_login') }}">
+                        <i class="fa fa-sign-in"></i> Sign In
+                    </a>
+                    to publish a comment
+                </p>
+            {% endif %}
+        </div>
+        <h3>{{ post.comments|length ~ ' comments' }}</h3>
+
+        {% for comment in post.comments %}
+            <div class="row post-comment">
+                <img class="avatar" src="{{ vich_uploader_asset(comment.author,'picture') }}">
+                <h4 class="col-sm-3">
+                    <strong></strong> {{ comment.author.username }} commented on
+                    <strong>{{ comment.publishedAt|localizeddate('medium', 'short') }}</strong>
+                </h4>
+                <div class="col-sm-9">
+                    {{ comment.content|md2html }}
+                </div>
+            </div>
+        {% else %}
+            <div class="post-comment">
+                <p>Be the first to comment on this post.</p>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

@@ -19,6 +19,9 @@ about:
 post_detail:
     path: /post/{slug}
     defaults: { _controller: AppBundle:Blog:postShow }
+comment_new:
+    path: /post/{slug}/comment
+    defaults: { _controller: AppBundle:Blog:commentForm }
 
 showuser:
     path: /show_user/

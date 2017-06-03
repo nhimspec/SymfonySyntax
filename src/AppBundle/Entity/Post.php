@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -74,6 +75,16 @@ class Post
     private $thumbnailName;
 
     /**
+     * @ORM\OneToMany(
+     *      targetEntity="Comment",
+     *      mappedBy="post",
+     *      orphanRemoval=true
+     * )
+     * @ORM\OrderBy({"publishedAt" = "DESC"})
+     */
+    private $comments;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Assert\DateTime()
      */
@@ -83,6 +94,7 @@ class Post
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
+        $this->comments = new ArrayCollection();
     }
 
     public function getId()
@@ -183,6 +195,22 @@ class Post
     public function getThumbnailName()
     {
         return $this->thumbnailName;
+    }
+
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment)
+    {
+        $this->comments->add($comment);
+        $comment->setPost($this);
+    }
+
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
     }
 
     public function getPublishedAt()
