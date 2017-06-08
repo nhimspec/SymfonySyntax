@@ -58,10 +58,9 @@ class Post
     private $content;
 
     /**
-     * @ORM\Column(type="string")
-     * @Assert\Email()
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="userAuthorPost")
      */
-    private $authorEmail;
+    private $authorPost;
 
     /**
      * @Vich\UploadableField(mapping="thumbnail_post", fileNameProperty="thumbnailName")
@@ -132,14 +131,14 @@ class Post
         $this->content = $content;
     }
 
-    public function getAuthorEmail()
+    public function getAuthorPost()
     {
-        return $this->authorEmail;
+        return $this->authorPost;
     }
 
-    public function setAuthorEmail($authorEmail)
+    public function setAuthorPost(User $user)
     {
-        $this->authorEmail = $authorEmail;
+        $this->authorPost = $user;
     }
 
     /**
@@ -151,7 +150,7 @@ class Post
      */
     public function isAuthor(User $user)
     {
-        return $user->getEmail() === $this->getAuthorEmail();
+        return $user === $this->getAuthorPost();
     }
 
     /**

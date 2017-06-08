@@ -26,6 +26,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]
     access_control:
             - { path: ^/admin, roles: ROLE_USER }
             - { path: ^/admin/delete, roles: ROLE_ADMIN }

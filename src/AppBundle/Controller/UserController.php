@@ -30,7 +30,6 @@ class UserController extends Controller
         $user = $userManager->createUser();
 
         $user->setEnabled(true);
-
         $form = $formFactory->createForm();
         $form->setData($user);
 

@@ -33,6 +33,16 @@ class User extends FOSUBUser
     private $userComments;
 
     /**
+     * @ORM\OneToMany(
+     *      targetEntity="AppBundle\Entity\Post",
+     *      mappedBy="authorPost",
+     *      orphanRemoval=true
+     * )
+     * @ORM\OrderBy({"publishedAt" = "DESC"})
+     */
+    private $userAuthorPost;
+
+    /**
      * @ORM\Column(name="facebook_id", type="string", length=255, nullable=true)
      */
     private $facebookId;
@@ -51,10 +61,20 @@ class User extends FOSUBUser
      */
     protected $profilePicture;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group")
+     * @ORM\JoinTable(name="fos_user_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
+
     public function __construct()
     {
         parent::__construct();
         $this->userComments = new ArrayCollection();
+        $this->userAuthorPost = new ArrayCollection();
     }
 
     /**

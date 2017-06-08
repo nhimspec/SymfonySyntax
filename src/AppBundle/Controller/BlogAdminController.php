@@ -39,7 +39,7 @@ class BlogAdminController extends Controller
     {
 
         $post = new Post();
-        $post->setAuthorEmail($this->getUser()->getEmail());
+        $post->setAuthorPost($this->getUser());
         $form = $this->createForm(PostType::class, $post);
 
         // 2) handle the submit (will only happen on POST)
@@ -97,7 +97,8 @@ class BlogAdminController extends Controller
         }
 
         return $this->render('admin/edit.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'post' => $post
         ));
     }
 
@@ -109,7 +110,7 @@ class BlogAdminController extends Controller
     public function deletePostAction(Post $post)
     {
         if (!$post) {
-            throw $this->createNotFoundException('No  found');
+            throw $this->createNotFoundException('No found');
         }
         $em = $this->getDoctrine()->getManager();
         $em->remove($post);

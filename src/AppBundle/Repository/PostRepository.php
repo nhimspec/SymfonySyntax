@@ -15,25 +15,16 @@ use Pagerfanta\Pagerfanta;
  */
 class PostRepository extends EntityRepository
 {
-    /**
-     * @return Query
-     */
+
     public function queryLatest()
     {
-        //        return $this->getEntityManager()
-        //            ->createQuery('
-        //                SELECT p
-        //                FROM AppBundle:Post p
-        //                WHERE p.publishedAt <= :now
-        //                ORDER BY p.publishedAt DESC
-        //            ')
-        //            ->setParameter('now', new \DateTime())
-        //            ;
-        return $this->getEntityManager()->createQueryBuilder()
-            ->select('p')
-            ->from('AppBundle:Post', 'p')
-            ->where('p.publishedAt <= :now')
-            ->orderBy('p.publishedAt', 'DESC')
+        return $this->getEntityManager()
+            ->createQuery('
+               SELECT p
+               FROM AppBundle:Post p
+               WHERE p.publishedAt <= :now
+               ORDER BY p.publishedAt DESC
+           ')
             ->setParameter('now', new \DateTime());
     }
 

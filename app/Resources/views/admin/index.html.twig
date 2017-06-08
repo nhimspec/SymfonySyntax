@@ -22,7 +22,7 @@
             {% for post in posts %}
                 <tr>
                     <td>{{ post.title }}</td>
-                    <td>{{ post.authorEmail }}</td>
+                    <td>{{ post.authorPost.email }}</td>
                     <td>{% if post.publishedAt %}{{ post.publishedAt|localizeddate('short', 'short') }}{% endif %}</td>
                     <td>
                         <div class="item-actions">

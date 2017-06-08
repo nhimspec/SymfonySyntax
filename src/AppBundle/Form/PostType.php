@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Post;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,9 +32,6 @@ class PostType extends AbstractType
             ))
             ->add('content', CKEditorType::class, array(
                 'config_name' => 'ck_blog_config'
-            ))
-            ->add('authorEmail', EmailType::class, array(
-                'label' => 'Author Email'
             ))
             ->add('publishedAt', 'AppBundle\Form\Type\DateTimePickerType', array(
                 'label' => 'Published At',

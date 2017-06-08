@@ -63,10 +63,13 @@ fos_user_security_logout:
     path:      /logout
     defaults:  { _controller: FOSUserBundle:Security:logout, _method: POST }
 fos_user_security_check:
-    path: /login/check-email
+    path: /login/login-check
 profile_avatar_edit_ajax:
     path:      /profile/edit/ajax
     defaults:  { _controller: AppBundle:Profile:avatarEdit }
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group
 
 hwi_oauth_redirect:
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"

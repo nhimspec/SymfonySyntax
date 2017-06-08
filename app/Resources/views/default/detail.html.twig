@@ -21,11 +21,12 @@
 
         {% for comment in post.comments %}
             <div class="row post-comment">
-                <img class="avatar" src="{{ vich_uploader_asset(comment.author,'picture') }}">
-                <h4 class="col-sm-3">
-                    <strong></strong> {{ comment.author.username }} commented on
-                    <strong>{{ comment.publishedAt|localizeddate('medium', 'short') }}</strong>
-                </h4>
+                <div class="col-sm-3">
+                    <img class="avatar" src="{{ vich_uploader_asset(comment.author,'picture') }}">
+                    <h4>{{ comment.author.username }} commented on
+                        {{  comment.publishedAt|localizeddate('medium', 'short') }}
+                    </h4>
+                </div>
                 <div class="col-sm-9">
                     {{ comment.content|md2html }}
                 </div>

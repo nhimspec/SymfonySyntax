@@ -19,7 +19,10 @@
             </div>
             {{ form_row(form.summary) }}
             {{ form_row(form.content) }}
-            {{ form_row(form.authorEmail) }}
+            <div class="form-group">
+                <label class="control-label required" for="post_author">Author Email</label>
+                <input type="text" id="post_author" class="form-control" readonly="readonly" value="{{ post.authorPost.email }}">
+            </div>
             {{ form_row(form.publishedAt) }}
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Edit">
