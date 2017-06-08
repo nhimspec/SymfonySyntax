@@ -16,6 +16,7 @@ use Pagerfanta\Pagerfanta;
 class PostRepository extends EntityRepository
 {
 
+
     public function queryLatest()
     {
         return $this->getEntityManager()
